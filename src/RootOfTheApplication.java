@@ -11,7 +11,6 @@ public class RootOfTheApplication {
         int choice=InputDataHandle.UserInput(1,i-1);
         IRole role = factory.GetRole(choice);
         Boolean isAdmin = role.GetRoleName().equals("Admin");
-        System.out.println("Your choice is "+role.GetRoleName());
-
+        role.start(isAdmin);
     }
 }
