@@ -4,8 +4,8 @@ public class User extends IRole {
 		return "User";
 	}
 
-	public void start() {
-		super.start();
+	public void start(boolean isAdmin) {
+		super.start(isAdmin);
 	}
 	
 }
