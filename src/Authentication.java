@@ -3,18 +3,18 @@ import java.util.Scanner;
 public class Authentication {
     public static UserModel CurrentUser;
 
-    public static boolean checkUsernameOrEmailAvailability(String data) {
+    public static boolean checkUsernameOrEmailNonAvailability(String data) {
         for (UserModel user : Model.getUsers()) {
             if (user.getUsername().equals(data) || user.getEmail().equals(data)) {
-                return false;
+                return true;
             }
         }
         for (UserModel admin : Model.getAdmins()) {
             if (admin.getUsername().equals(data) || admin.getEmail().equals(data)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public static void Register(boolean isAdmin) {
@@ -23,14 +23,14 @@ public class Authentication {
         String name = scanner.nextLine();
         System.out.println("Enter your email");
         String email = scanner.nextLine();
-        while (!checkUsernameOrEmailAvailability(email) || !email.contains("@") || !email.contains(".")) {
+        while (checkUsernameOrEmailNonAvailability(email) || !email.contains("@") || !email.contains(".")) {
             System.out.println("Invalid Email or Email already exists");
             System.out.println("Enter your email");
             email = scanner.nextLine();
         }
         System.out.println("Enter your username");
         String username = scanner.nextLine();
-        while (!checkUsernameOrEmailAvailability(username) || username.length() < 5) {
+        while (checkUsernameOrEmailNonAvailability(username) || username.length() < 5) {
             System.out.println("Username should be more than 5 characters or Username already exists");
             System.out.println("Enter your username");
             username = scanner.nextLine();
