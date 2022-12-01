@@ -60,7 +60,54 @@ public class Authentication {
         System.out.println("You have been registered successfully");
         System.out.println("Please " +user.getName()+" Login first to Continue ");
         // then login and set current user to this user
+
+
+    }
+    public static UserModel checkRegister(String email,String password,boolean isAdmin) {
+        if(isAdmin) {
+            for (UserModel admin : Model.getAdmins()) {
+                if(admin.getEmail().equals(email) && admin.getPassword().equals(password)) {
+                    return admin;
+                }
+            }
+        } else {
+            for(UserModel user : Model.getUsers()) {
+                if(user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                    return user;
+                }
+            }
+        }
+        return null;
     }
 
+    public static void Login(boolean isAdmin) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your Email");
+        String Email = scanner.nextLine();
+        System.out.println("Enter your password");
+        String password = scanner.nextLine();
+        while(checkRegister(Email,password,isAdmin) == null) {
+            System.out.println("Invalid Email or password");
+            System.out.println("if you don't have an account enter 0 else enter any number");
+            if (scanner.nextLine() .equals("0")) {
+                Register(isAdmin);
+            }
+            System.out.println("Enter your Email");
+            Email = scanner.nextLine();
+            System.out.println("Enter your password");
+            password = scanner.nextLine();
+        }
+        CurrentUser = checkRegister(Email,password,isAdmin);
+        System.out.println("Login successfully");
+
+
+
+    }
+    public static void Logout(){
+        System.out.println("Logout successfully");
+        CurrentUser=null;
+        RootOfTheApplication.Start();
+
+    }
 }
 
