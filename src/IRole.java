@@ -5,7 +5,12 @@ public abstract class IRole {
 	public void start(boolean isAdmin)  {
         System.out.println("1. For Register");
         System.out.println("2. For Login");
-        int choice = InputDataHandle.UserInput(1, 2);   
+        int choice = InputDataHandle.UserInput(1, 2);
+        if(choice == 1) {
+            Authentication.Register(isAdmin);
+        } else {
+            // login function
+        }
 	}
 	
 }

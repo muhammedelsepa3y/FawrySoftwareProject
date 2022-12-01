@@ -20,4 +20,5 @@ public class Model {
     public static List<UserModel> getAdmins() {
         return admins;
     }
+
 }

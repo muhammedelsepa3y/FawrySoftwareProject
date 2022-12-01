@@ -22,5 +22,8 @@ public class UserModel {
     public String getPassword() {
         return password;
     }
+    public String getUsername() {
+        return username;
+    }
 
 }
