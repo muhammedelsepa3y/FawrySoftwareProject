@@ -5,18 +5,12 @@ public class RootOfTheApplication {
         FawryFactory factory = new FawryFactory();
         int i=1;
         while(factory.GetRole(i)!=null){
-            System.out.println(String.valueOf(i+". For ")+factory.GetRole(i).GetRoleName());
+            System.out.println(i+". For "+factory.GetRole(i).GetRoleName());
             i++;
         }
-        Scanner scanner=new Scanner(System.in);
-        System.out.println("Please Enter Your Choice");
-        int choice =scanner.nextInt();
-        while(choice<1||choice>i-1) {
-            System.out.println("Invalid input, please try again");
-            choice =scanner.nextInt();
-        }
+        int choice=InputDataHandle.UserInput(1,i-1);
         IRole role = factory.GetRole(choice);
-        Boolean isAdmin = role.GetRoleName()=="Admin";
+        Boolean isAdmin = role.GetRoleName().equals("Admin");
         System.out.println("Your choice is "+role.GetRoleName());
 
     }
