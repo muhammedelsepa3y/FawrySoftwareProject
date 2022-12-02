@@ -10,6 +10,7 @@ public abstract class IRole {
             Authentication.Register(isAdmin);
         } else {
             // login function
+            Authentication.Login(isAdmin);
         }
 	}
 	
