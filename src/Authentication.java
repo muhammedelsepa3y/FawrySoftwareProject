@@ -59,9 +59,7 @@ public class Authentication {
         }
         System.out.println("You have been registered successfully");
         System.out.println("Please " +user.getName()+" Login first to Continue ");
-        // then login and set current user to this user
-
-
+        Login(isAdmin);
     }
     public static UserModel checkRegister(String email,String password,boolean isAdmin) {
         if(isAdmin) {
@@ -99,15 +97,11 @@ public class Authentication {
         }
         CurrentUser = checkRegister(Email,password,isAdmin);
         System.out.println("Login successfully");
-
-
-
     }
     public static void Logout(){
         System.out.println("Logout successfully");
         CurrentUser=null;
         RootOfTheApplication.Start();
-
     }
 }
 
