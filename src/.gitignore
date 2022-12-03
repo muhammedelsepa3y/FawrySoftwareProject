@@ -17,3 +17,6 @@
 /CashPayment.class
 /CreditCardPay.class
 /WalletPay.class
+/DiscountModel.class
+/IFawryFactory.class
+/AdminServices.class
