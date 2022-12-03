@@ -13,3 +13,7 @@
 /RoleFactory.class
 /IPaymentFactory.class
 /PaymentFactory.class
+/IPayment.class
+/CashPayment.class
+/CreditCardPay.class
+/WalletPay.class

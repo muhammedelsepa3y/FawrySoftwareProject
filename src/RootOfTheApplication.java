@@ -1,8 +1,9 @@
 import java.util.Scanner;
+
 public class RootOfTheApplication {
     public static void Start() {
         System.out.println("\nWelcome to Fawry services");
-        FawryFactory factory = new FawryFactory();
+        RoleFactory factory = new RoleFactory();
         int i=1;
         while(factory.GetRole(i)!=null){
             System.out.println(i+". For "+factory.GetRole(i).GetRoleName());
