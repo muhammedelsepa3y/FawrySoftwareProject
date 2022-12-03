@@ -6,3 +6,10 @@
 /FawryFactoryInterface.class
 /InputDataHandle.class
 /RootOfTheApplication.class
+/Authentication.class
+/Model.class
+/UserModel.class
+/IRoleFactory.class
+/RoleFactory.class
+/IPaymentFactory.class
+/PaymentFactory.class
