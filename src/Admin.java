@@ -124,14 +124,57 @@ public class Admin extends IRole implements AdminServices {
     }
     @Override
     public void getAllDiscounts() {
-       
+        boolean found = false;
+        for (DiscountModel discountModel : Model.getDiscounts()) {
+            found = true;
+            System.out.println("Service Name: " + discountModel.getFeatureName());
+            System.out.println("Discount Percantage:  " + discountModel.getDiscountPercentage() + " %");
+            System.out.println("Date: " + discountModel.getDiscountDescription());
+            System.out.println("Discount Id: " + discountModel.getDiscountID());
+            System.out.println("Just to first transaction: " + discountModel.isOverAll());
+            System.out.println("-----------------------");
+        }
+        if (!found) {
+            System.out.println("No discounts found");
+        }
+        return;
 
     }
     @Override
     public void setPaymentActivate() {
-        
+        System.out.print("");
+        int counter = 1;
+        IPaymentFactory paymentFactory = new PaymentFactory();
+        IPayment temp=paymentFactory.GetPayment(counter);
+        while (temp != null) {
+            System.out.println(counter + ". " + temp.GetPaymentName()+"   is active: "+temp.isActivated());
+            counter++;
+            temp=paymentFactory.GetPayment(counter);
+        }
+        int choicee = UserInput.userInput(1, counter - 1);
+        while (choicee == 3) {
+            System.out.print("!!!! You cannot change status of cash here please go back and set cash for each service\n");
+            System.out.println("Enter the number of the payment method you want to activate or 0 to back:");
+            choicee = UserInput.userInput(0, counter - 1);
+            if (choicee == 0) {
+                return;
+            }
+        }
+        System.out.println("1. Activate");
+        System.out.println("2. Deactivate");
+        System.out.println("3. Go Back");
+        int choice = UserInput.userInput(1, 3);
+        System.out.print("");
+        if (choice == 1) {
+            paymentFactory.GetPayment(choicee).setActivated(true);
+            System.out.println("Payment method activated successfully");
+        } else if (choice == 2) {
+            paymentFactory.GetPayment(choicee).setActivated(false);
+            System.out.println("Payment method deactivated successfully");
+        } else {
+            return;
+        }
     }
-    
 public void refundMoneyToUser(RefundModel refundModel){
 
 }
@@ -144,6 +187,7 @@ public void setCashForPaymentMethod(){
 
 
 }
+
 
     
 
