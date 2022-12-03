@@ -8,7 +8,7 @@ public class Admin extends IRole implements AdminServices {
     public void start(boolean isAdmin) {
         super.start(isAdmin);
         while (true) {
-            System.out.println("\nWelcome " + Authentication.user.getUsername());
+            System.out.println("\nWelcome " + Authentication.CurrentUser.getUsername());
             System.out.println("1- Add Discount");
             System.out.println("2- Remove Discount");
             System.out.println("3- Get All Discounts");
@@ -16,7 +16,7 @@ public class Admin extends IRole implements AdminServices {
             System.out.println("5- set Cash for each service");
             System.out.println("6- Check All Not Checked Refunds Requests");
             System.out.println("7- Logout");
-            int choice=UserInput.userInput(1,7);
+            int choice=InputDataHandle.UserInput(1,7);
             switch (choice) {
                 case 1:
                     AddDiscount();
@@ -49,7 +49,7 @@ public class Admin extends IRole implements AdminServices {
         System.out.println("1. is Overall Discount");
         System.out.println("2. is Service Discount");
         System.out.println("3. Go Back");
-        int isOverAll = UserInput.userInput(1, 3);
+        int isOverAll = InputDataHandle.UserInput(1, 3);
         if (isOverAll == 3) {
             return;
         }
@@ -65,7 +65,7 @@ public class Admin extends IRole implements AdminServices {
                 System.out.println(i+". "+feature);
                 i++;
             }
-            int feature = UserInput.userInput(1, i-1);
+            int feature = InputDataHandle.UserInput(1, i-1);
             NameOfFeature = features.get(feature-1);
         }
         System.out.println("Enter the discount percentage: ");

@@ -8,6 +8,7 @@ public class Model {
 
     private static List<DiscountModel> discounts= new ArrayList<DiscountModel>();
 
+    private static List<RefundModel> NotCheckedRefunds= new ArrayList<RefundModel>();
     public static void AddUser(UserModel user) {
         users.add(user);
     }
@@ -31,5 +32,13 @@ public class Model {
         return discounts;
     }
 
+    public static List<RefundModel> GetNotCheckedRefunds() {
+        return NotCheckedRefunds;
+    }
     public static void RemoveDiscount(DiscountModel discount) {discounts.remove(discount);}
+
+    public static void AddNotCheckedRefunds(RefundModel refund) {
+        NotCheckedRefunds.add(refund);
+    }
+
 }
