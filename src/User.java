@@ -68,10 +68,29 @@ public class User extends IRole implements UserServices{
 		System.out.println("Enter the amount:");
 		Scanner scanner = new Scanner(System.in);
 		int amount = scanner.nextInt();
+		PaymentFactory paymentFactory = new PaymentFactory();
+		IPayment payment = paymentFactory.GetPayment(1);
+		payment.Pay(amount,Authentication.CurrentUser);
+		Authentication.CurrentUser.addWallet(amount);
 
 	}
 	@Override
 	public void PrintDiscounts() {
+		boolean flag = false;
+		for(DiscountModel i : Model.getDiscounts()){
+			flag = true;
+			System.out.println("Feature Name: "+i.getFeatureName());
+			System.out.println("Discount Percentage: "+i.getDiscountPercentage()+" %");
+			System.out.println("Date: "+i.getDiscountDescription());
+			if(i.isOverAll()){
+				System.out.println("This discount For First Transaction");
+			}
+			System.out.println("-------------------------------------------------");
+		}
+		if(!flag){
+			System.out.println("No Discounts Available");
+		}
+		return;
 
 	}
 	public TransactionModel GetTransactionById(int id){
@@ -88,16 +107,39 @@ public class User extends IRole implements UserServices{
 		boolean flag = false;
 		for (TransactionModel i : Authentication.CurrentUser.getTransaction()) {
 			flag = true;
-			System.out.println("Transaction Id: " + i.getId());
+			System.out.println("Transaction Id: "+i.getId());
 			System.out.println(i.getServiceName());
 			System.out.println(i.getAmount());
 			System.out.println(i.getDate());
 			System.out.println("-----------------------");
 		}
-
+		if(!flag){
+			System.out.println("No Transactions Available");
+			return;
+		}
+		System.out.println("Enter the transaction id or 0 to Go Back:");
+		Scanner scanner = new Scanner(System.in);
+		int id = scanner.nextInt();
+		if(id == 0){
+			return;
+		}
+		System.out.println("Enter the Reason:");
+		Scanner scanner1 = new Scanner(System.in);
+		String reason = scanner1.nextLine();
+		TransactionModel transaction = GetTransactionById(id);
+		if(transaction != null){
+			Model.AddNotCheckedRefunds(new RefundModel(transaction,reason));
+			System.out.println("Refund Request is send successfully");
+		}
+		else{
+			System.out.println("Invalid transaction id");
+		}
+		return;
 	}
 	@Override
 	public void getWalletBalanced() {
+		System.out.println("Your Wallet Balance is: "+Authentication.CurrentUser.getWallet()+" $");
+		return;
 
 	}
 	@Override
