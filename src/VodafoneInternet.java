@@ -24,7 +24,7 @@ public class VodafoneInternet implements IInternetPayment,Form {
     }
 
     @Override
-    public void getData() {
+    public void GetDataFromUser() {
         System.out.println("Please Enter the Data of the next form for this service");
     }
 
@@ -89,10 +89,7 @@ public class VodafoneInternet implements IInternetPayment,Form {
         };
     }
 
-    public boolean Recharge(int amount, UserModel user) {
 
-        return true;
-    }
 
     public String GetInternetName() {
         return "Vodafone Internet";
@@ -105,10 +102,6 @@ public class VodafoneInternet implements IInternetPayment,Form {
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
-	@Override
-	public void GetDataFromUser() {
-		// TODO Auto-generated method stub
-		
-	}
+
 }
 
