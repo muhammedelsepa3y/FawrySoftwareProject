@@ -151,11 +151,11 @@ public class Admin extends IRole implements AdminServices {
             counter++;
             temp=paymentFactory.GetPayment(counter);
         }
-        int choicee = UserInput.userInput(1, counter - 1);
+        int choicee = InputDataHandle.UserInput(1, counter - 1);
         while (choicee == 3) {
             System.out.print("!!!! You cannot change status of cash here please go back and set cash for each service\n");
             System.out.println("Enter the number of the payment method you want to activate or 0 to back:");
-            choicee = UserInput.userInput(0, counter - 1);
+            choicee = InputDataHandle.UserInput(0, counter - 1);
             if (choicee == 0) {
                 return;
             }
@@ -163,7 +163,7 @@ public class Admin extends IRole implements AdminServices {
         System.out.println("1. Activate");
         System.out.println("2. Deactivate");
         System.out.println("3. Go Back");
-        int choice = UserInput.userInput(1, 3);
+        int choice = InputDataHandle.UserInput(1, 3);
         System.out.print("");
         if (choice == 1) {
             paymentFactory.GetPayment(choicee).setActivated(true);
