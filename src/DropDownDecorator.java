@@ -23,4 +23,9 @@ public class DropDownDecorator implements Form{
         this.value=Options[choice-1];
         System.out.println("You have selected " + Options[choice-1]);
     }
+	@Override
+	public void getData() {
+		// TODO Auto-generated method stub
+		
+	}
 }
