@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class MonthlyReceiptLandline implements ILandlinePayment,Form{
 
     private static MonthlyReceiptLandline instance = null;
@@ -22,18 +25,18 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
     }
 
     @Override
-    public void getData() {
+    public void GetDataFromUser() {
         System.out.println("Please Enter the Data of the next form for this service");
     }
 
     @Override
     public void Recharge(UserModel user) {
-        this.TextFields.get(this.TextFields.size()-1).getData();
+        this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
         String Landline = this.TextFields.get(1).getValueString();
         Integer lastamount;
         for(DiscountModel dis : Model.getDiscounts()){
-            if (dis.isOverAll() && Authentication.user.getTransaction().size()==0) {
+            if (dis.isOverAll() && Authentication.CurrentUser.getTransaction().size()==0) {
                 System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for first transaction");
                 lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
                 System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
@@ -102,4 +105,6 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
+
+
 }

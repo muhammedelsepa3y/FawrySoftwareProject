@@ -23,18 +23,18 @@ public class OrangeMobile implements IMobileRecharge,Form {
         return instance;
     }
     @Override
-    public void getData() {
+    public void GetDataFromUser() {
         System.out.println("Please Enter the Data of the next form for this service");
     }
 
     @Override
     public void Recharge( UserModel user) {
-        this.TextFields.get(this.TextFields.size()-1).getData();
+        this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
         String MobileNumber = this.TextFields.get(1).getValueString();
         Integer lastamount;
         for(DiscountModel dis : Model.getDiscounts()){
-            if (dis.isOverAll() && Authentication.user.getTransaction().size()==0) {
+            if (dis.isOverAll() && Authentication.CurrentUser.getTransaction().size()==0) {
                 System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for first transaction");
                 lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
                 System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
@@ -71,17 +71,17 @@ public class OrangeMobile implements IMobileRecharge,Form {
             count++;
             payment = paymentFactory.GetPayment(count);
         }
-        int choice3 = UserInput.userInput(1, count-1);
+        int choice3 = InputDataHandle.UserInput(1, count-1);
         while (!paymentFactory.GetPayment(choice3).isActivated() || (choice3==3 &&!this.isAcceptedCash()) ) {
             System.out.println("This payment is not activated");
             System.out.println("Please enter your choice:");
-            choice3 = UserInput.userInput(1, count-1);
+            choice3 = InputDataHandle.UserInput(1, count-1);
         }
         payment = paymentFactory.GetPayment(choice3);
-        if(payment.Pay(amount,Authentication.user)){
+        if(payment.Pay(amount,Authentication.CurrentUser)){
             System.out.println("You paid "+amount+" $ Successfully to "+this.GetMobileRechargeName());
-            Authentication.user.deductWallet(amount);
-            Authentication.user.addTransaction(new TransactionModel(this.GetMobileRechargeName(),amount,MobileNumber,Authentication.user));
+            Authentication.CurrentUser.deductWallet(amount);
+            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetMobileRechargeName(),amount,MobileNumber,Authentication.CurrentUser));
         }
         else{
             System.out.println("Payment is failed");
@@ -100,4 +100,6 @@ public class OrangeMobile implements IMobileRecharge,Form {
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
+
+
 }

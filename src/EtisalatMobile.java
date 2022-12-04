@@ -23,13 +23,13 @@ public class EtisalatMobile implements IMobileRecharge,Form {
         return instance;
     }
     @Override
-    public void getData() {
+    public void GetDataFromUser() {
         System.out.println("Please Enter the Data of the next form for this service");
     }
 
     @Override
     public void Recharge( UserModel user) {
-        this.TextFields.get(this.TextFields.size()-1).getData();
+        this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
         String MobileNumber = this.TextFields.get(1).getValueString();
         Integer lastamount;
@@ -81,7 +81,7 @@ public class EtisalatMobile implements IMobileRecharge,Form {
         if(payment.Pay(amount,Authentication.CurrentUser)){
             System.out.println("You paid "+amount+" $ Successfully to "+this.GetMobileRechargeName());
             Authentication.CurrentUser.deductWallet(amount);
-            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetMobileRechargeName(),amount,MobileNumber,Authentication.user));
+            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetMobileRechargeName(),amount,MobileNumber,Authentication.CurrentUser));
         }
         else{
             System.out.println("Payment is failed");
@@ -103,5 +103,7 @@ public class EtisalatMobile implements IMobileRecharge,Form {
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
+
+
 
 }
