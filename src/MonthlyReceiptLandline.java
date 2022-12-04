@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
 public class MonthlyReceiptLandline implements ILandlinePayment,Form{
 
     private static MonthlyReceiptLandline instance = null;
