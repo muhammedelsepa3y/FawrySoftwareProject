@@ -22,3 +22,9 @@
 /AdminServices.class
 /RefundModel.class
 /TransactionModel.class
+/DropDownDecorator.class
+/Form.class
+/ILandlineFactory.class
+/LandlineFactory.class
+/TextFieldDecorator.class
+/UserServices.class
