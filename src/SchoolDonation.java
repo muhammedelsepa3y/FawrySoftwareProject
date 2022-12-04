@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-public class SchoolDonation implements IDonation,Form{
+public class SchoolDonation implements IDonation,Form {
     private static SchoolDonation instance = null;
     private boolean isAcceptedCash = true;
     private List<TextFieldDecorator> TextFields= new ArrayList<TextFieldDecorator>();
@@ -29,7 +29,7 @@ public class SchoolDonation implements IDonation,Form{
 
     @Override
     public void Recharge(UserModel user) {
-        this.TextFields.get(this.TextFields.size()-1).getData();
+        this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
         String MobileNumber = this.TextFields.get(1).getValueString();
         Integer lastamount;
@@ -102,4 +102,5 @@ public class SchoolDonation implements IDonation,Form{
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
+
 }
