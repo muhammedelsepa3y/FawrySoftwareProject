@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrangeMobile implements IMobileRecharge,Form {
-    private static OrangeMobile instance=null;
+public class WeMobile implements IMobileRecharge,Form {
+    private static WeMobile instance = null;
     private boolean isAcceptedCash = false;
     private List<TextFieldDecorator> TextFields= new ArrayList<TextFieldDecorator>();
     private List<DropDownDecorator> DropDowns= new ArrayList<DropDownDecorator>();
-    private OrangeMobile() {
+    private WeMobile() {
         Form form= new TextFieldDecorator(this);
         ((TextFieldDecorator) form).setName("Amount");
         ((TextFieldDecorator) form).setValueInt(0);
@@ -16,19 +16,21 @@ public class OrangeMobile implements IMobileRecharge,Form {
         ((TextFieldDecorator) form).setValueString("");
         this.TextFields.add((TextFieldDecorator) form);
     }
-    public static OrangeMobile getInstance() {
-        if(instance==null) {
-            instance=new OrangeMobile();
+    public static WeMobile getInstance() {
+        if (instance == null) {
+            instance = new WeMobile();
         }
         return instance;
     }
+
     @Override
     public void GetDataFromUser() {
         System.out.println("Please Enter the Data of the next form for this service");
+
     }
 
     @Override
-    public void Recharge( UserModel user) {
+    public void Recharge(UserModel user) {
         this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
         String MobileNumber = this.TextFields.get(1).getValueString();
@@ -51,6 +53,7 @@ public class OrangeMobile implements IMobileRecharge,Form {
                 }
             }
         }
+
         PaymentFactory paymentFactory = new PaymentFactory();
         Integer count=1;
         String last = "";
@@ -86,11 +89,10 @@ public class OrangeMobile implements IMobileRecharge,Form {
         else{
             System.out.println("Payment is failed");
         };
-
     }
     @Override
     public String GetMobileRechargeName() {
-        return "Orange Mobile";
+        return "We Mobile";
     }
     @Override
     public boolean isAcceptedCash() {
@@ -100,11 +102,6 @@ public class OrangeMobile implements IMobileRecharge,Form {
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
-	@Override
-	public void getData() {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }

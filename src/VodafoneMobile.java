@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrangeMobile implements IMobileRecharge,Form {
-    private static OrangeMobile instance=null;
+public class VodafoneMobile implements IMobileRecharge,Form {
+    private static VodafoneMobile instance=null;
     private boolean isAcceptedCash = false;
     private List<TextFieldDecorator> TextFields= new ArrayList<TextFieldDecorator>();
     private List<DropDownDecorator> DropDowns= new ArrayList<DropDownDecorator>();
-    private OrangeMobile() {
+    private VodafoneMobile() {
         Form form= new TextFieldDecorator(this);
         ((TextFieldDecorator) form).setName("Amount");
         ((TextFieldDecorator) form).setValueInt(0);
@@ -16,20 +16,21 @@ public class OrangeMobile implements IMobileRecharge,Form {
         ((TextFieldDecorator) form).setValueString("");
         this.TextFields.add((TextFieldDecorator) form);
     }
-    public static OrangeMobile getInstance() {
+    public static VodafoneMobile getInstance() {
         if(instance==null) {
-            instance=new OrangeMobile();
+            ;
+            instance=new VodafoneMobile();
         }
         return instance;
     }
     @Override
-    public void GetDataFromUser() {
+    public void getData() {
         System.out.println("Please Enter the Data of the next form for this service");
     }
 
     @Override
     public void Recharge( UserModel user) {
-        this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
+        this.TextFields.get(this.TextFields.size()-1).getData();
         int amount = this.TextFields.get(0).getValueInt();
         String MobileNumber = this.TextFields.get(1).getValueString();
         Integer lastamount;
@@ -90,21 +91,21 @@ public class OrangeMobile implements IMobileRecharge,Form {
     }
     @Override
     public String GetMobileRechargeName() {
-        return "Orange Mobile";
+        return "Vodafone Mobile";
     }
+
+
     @Override
     public boolean isAcceptedCash() {
         return isAcceptedCash;
     }
+
     @Override
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
-	@Override
-	public void getData() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }
+
+
+
+

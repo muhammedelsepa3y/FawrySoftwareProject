@@ -1,37 +1,39 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrangeMobile implements IMobileRecharge,Form {
-    private static OrangeMobile instance=null;
+public class EtisalatInternet implements IInternetPayment,Form {
+    private static EtisalatInternet instance = null;
     private boolean isAcceptedCash = false;
     private List<TextFieldDecorator> TextFields= new ArrayList<TextFieldDecorator>();
     private List<DropDownDecorator> DropDowns= new ArrayList<DropDownDecorator>();
-    private OrangeMobile() {
+    private EtisalatInternet() {
         Form form= new TextFieldDecorator(this);
         ((TextFieldDecorator) form).setName("Amount");
         ((TextFieldDecorator) form).setValueInt(0);
         this.TextFields.add((TextFieldDecorator) form);
         form= new TextFieldDecorator(form);
-        ((TextFieldDecorator) form).setName("Mobile Number");
+        ((TextFieldDecorator) form).setName("Internet Number");
         ((TextFieldDecorator) form).setValueString("");
         this.TextFields.add((TextFieldDecorator) form);
     }
-    public static OrangeMobile getInstance() {
-        if(instance==null) {
-            instance=new OrangeMobile();
+    public static EtisalatInternet getInstance() {
+        if (instance == null) {
+            instance = new EtisalatInternet();
         }
         return instance;
     }
+
+
     @Override
-    public void GetDataFromUser() {
+    public void getData() {
         System.out.println("Please Enter the Data of the next form for this service");
     }
 
     @Override
-    public void Recharge( UserModel user) {
+    public void Recharge(UserModel user) {
         this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
-        String MobileNumber = this.TextFields.get(1).getValueString();
+        String InternetNumber = this.TextFields.get(1).getValueString();
         Integer lastamount;
         for(DiscountModel dis : Model.getDiscounts()){
             if (dis.isOverAll() && Authentication.CurrentUser.getTransaction().size()==0) {
@@ -42,7 +44,7 @@ public class OrangeMobile implements IMobileRecharge,Form {
                 amount=lastamount;
             }
             else if(!dis.isOverAll()){
-                if(this.GetMobileRechargeName().contains(dis.getFeatureName())){
+                if(this.GetInternetName().contains(dis.getFeatureName())){
                     System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for this service");
                     lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
                     System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
@@ -79,32 +81,30 @@ public class OrangeMobile implements IMobileRecharge,Form {
         }
         payment = paymentFactory.GetPayment(choice3);
         if(payment.Pay(amount,Authentication.CurrentUser)){
-            System.out.println("You paid "+amount+" $ Successfully to "+this.GetMobileRechargeName());
+            System.out.println("You paid "+amount+" $ Successfully to "+this.GetInternetName());
             Authentication.CurrentUser.deductWallet(amount);
-            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetMobileRechargeName(),amount,MobileNumber,Authentication.CurrentUser));
+            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetInternetName(),amount,InternetNumber,Authentication.CurrentUser));
         }
         else{
             System.out.println("Payment is failed");
         };
+    }
 
+    public String GetInternetName() {
+        return "Etisalat Internet";
     }
-    @Override
-    public String GetMobileRechargeName() {
-        return "Orange Mobile";
-    }
-    @Override
+
     public boolean isAcceptedCash() {
-        return isAcceptedCash;
+        return this.isAcceptedCash;
     }
-    @Override
+
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
 	@Override
-	public void getData() {
+	public void GetDataFromUser() {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 }
