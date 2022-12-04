@@ -1,13 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
+public class QuarterReceiptLandline implements ILandlinePayment,Form{
 
-public class MonthlyReceiptLandline implements ILandlinePayment,Form{
-
-    private static MonthlyReceiptLandline instance = null;
+    private static QuarterReceiptLandline instance = null;
     private boolean isAcceptedCash = true;
     private List<TextFieldDecorator> TextFields= new ArrayList<TextFieldDecorator>();
     private List<DropDownDecorator> DropDowns= new ArrayList<DropDownDecorator>();
-    private MonthlyReceiptLandline(){
+    private QuarterReceiptLandline(){
         Form form= new TextFieldDecorator(this);
         ((TextFieldDecorator) form).setName("Amount");
         ((TextFieldDecorator) form).setValueInt(0);
@@ -17,9 +16,9 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
         ((TextFieldDecorator) form).setValueString("");
         this.TextFields.add((TextFieldDecorator) form);
     }
-    public static MonthlyReceiptLandline getInstance(){
+    public static QuarterReceiptLandline getInstance(){
         if(instance == null){
-            instance = new MonthlyReceiptLandline();
+            instance = new QuarterReceiptLandline();
         }
         return instance;
     }
@@ -43,7 +42,6 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
                 System.out.println("You will pay "+lastamount+" $ instead of "+amount+" $");
                 amount=lastamount;
             }
-
             else if(!dis.isOverAll()){
                 if(this.GetLandlineName().contains(dis.getFeatureName())){
                     System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for this service");
@@ -93,7 +91,7 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
 
     @Override
     public String GetLandlineName() {
-        return "Monthly Receipt Landline";
+        return "Quarter Receipt Landline";
     }
 
     @Override
@@ -110,6 +108,4 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
 		// TODO Auto-generated method stub
 		
 	}
-
-
 }

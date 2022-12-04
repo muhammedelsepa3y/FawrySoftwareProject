@@ -1,25 +1,25 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonthlyReceiptLandline implements ILandlinePayment,Form{
-
-    private static MonthlyReceiptLandline instance = null;
-    private boolean isAcceptedCash = true;
+public class VodafoneMobile implements IMobileRecharge,Form {
+    private static VodafoneMobile instance=null;
+    private boolean isAcceptedCash = false;
     private List<TextFieldDecorator> TextFields= new ArrayList<TextFieldDecorator>();
     private List<DropDownDecorator> DropDowns= new ArrayList<DropDownDecorator>();
-    private MonthlyReceiptLandline(){
+    private VodafoneMobile() {
         Form form= new TextFieldDecorator(this);
         ((TextFieldDecorator) form).setName("Amount");
         ((TextFieldDecorator) form).setValueInt(0);
         this.TextFields.add((TextFieldDecorator) form);
         form= new TextFieldDecorator(form);
-        ((TextFieldDecorator) form).setName("Landline Number");
+        ((TextFieldDecorator) form).setName("Mobile Number");
         ((TextFieldDecorator) form).setValueString("");
         this.TextFields.add((TextFieldDecorator) form);
     }
-    public static MonthlyReceiptLandline getInstance(){
-        if(instance == null){
-            instance = new MonthlyReceiptLandline();
+    public static VodafoneMobile getInstance() {
+        if(instance==null) {
+            ;
+            instance=new VodafoneMobile();
         }
         return instance;
     }
@@ -27,13 +27,15 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
     @Override
     public void GetDataFromUser() {
         System.out.println("Please Enter the Data of the next form for this service");
+
     }
 
+
     @Override
-    public void Recharge(UserModel user) {
+    public void Recharge( UserModel user) {
         this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
-        String Landline = this.TextFields.get(1).getValueString();
+        String MobileNumber = this.TextFields.get(1).getValueString();
         Integer lastamount;
         for(DiscountModel dis : Model.getDiscounts()){
             if (dis.isOverAll() && Authentication.CurrentUser.getTransaction().size()==0) {
@@ -43,9 +45,8 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
                 System.out.println("You will pay "+lastamount+" $ instead of "+amount+" $");
                 amount=lastamount;
             }
-
             else if(!dis.isOverAll()){
-                if(this.GetLandlineName().contains(dis.getFeatureName())){
+                if(this.GetMobileRechargeName().contains(dis.getFeatureName())){
                     System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for this service");
                     lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
                     System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
@@ -82,19 +83,20 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
         }
         payment = paymentFactory.GetPayment(choice3);
         if(payment.Pay(amount,Authentication.CurrentUser)){
-            System.out.println("You paid "+amount+" $ Successfully to "+this.GetLandlineName());
+            System.out.println("You paid "+amount+" $ Successfully to "+this.GetMobileRechargeName());
             Authentication.CurrentUser.deductWallet(amount);
-            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetLandlineName(),amount,Landline,Authentication.CurrentUser));
+            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetMobileRechargeName(),amount,MobileNumber,Authentication.CurrentUser));
         }
         else{
             System.out.println("Payment is failed");
         };
+
+    }
+    @Override
+    public String GetMobileRechargeName() {
+        return "Vodafone Mobile";
     }
 
-    @Override
-    public String GetLandlineName() {
-        return "Monthly Receipt Landline";
-    }
 
     @Override
     public boolean isAcceptedCash() {
@@ -105,11 +107,8 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
-	@Override
-	public void getData() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }
+
+
+
+
