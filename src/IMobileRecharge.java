@@ -4,3 +4,4 @@ public interface IMobileRecharge {
     public boolean isAcceptedCash();
     public void  setAcceptedCash(boolean isAcceptedCash);
 }
+
