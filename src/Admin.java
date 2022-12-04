@@ -176,10 +176,51 @@ public class Admin extends IRole implements AdminServices {
         }
     }
 public void refundMoneyToUser(RefundModel refundModel){
-
+    refundModel.getTransaction().getUser().addWallet(refundModel.getTransaction().getAmount());
+    refundModel.getTransaction().getUser().RemoveTransaction(refundModel.getTransaction());
+    return;
 }
 
 public void getNotCheckedRefundsRequests(){
+    boolean found = false;
+    List<RefundModel> refunds = Model.GetNotCheckedRefunds();
+    for (RefundModel refundModel : refunds) {
+        if (!refundModel.isChecked()) {
+            found = true;
+            System.out.println("Email: " + refundModel.getTransaction().getUser().getEmail());
+            System.out.println("Username: " + refundModel.getTransaction().getUser().getUsername());
+            System.out.println("Service Name: " + refundModel.getTransaction().getServiceName());
+            System.out.println("Amount: " + refundModel.getTransaction().getAmount() + "$");
+            System.out.println("Date: " + refundModel.getTransaction().getDate());
+            System.out.println("Reason: " + refundModel.getReason());
+            System.out.println("1. Accept");
+            System.out.println("2. Reject");
+            System.out.println("3. Back");
+            System.out.println("-----------------------");
+            int choice=InputDataHandle.UserInput(1,3);
+            if (choice == 1) {
+                refundModel.setChecked(true);
+                refundMoneyToUser(refundModel);
+                refundModel.setApproved(true);
+                System.out.println(refundModel.getTransaction().getAmount() + "$ is refunded to " + refundModel.getTransaction().getUser().getUsername());
+                System.out.println("Refund Accepted");
+            } else if (choice == 2) {
+                refundModel.setChecked(true);
+                refundModel.setApproved(false);
+                System.out.println("Refund Rejected");
+            }else if(choice==3){
+                return;
+            }
+
+            System.out.println("-----------------------");
+        }
+
+    }
+    if (!found) {
+        System.out.println("No Not Checked Refunds Requests");
+    }
+    return;
+
 
 }
 
@@ -187,10 +228,6 @@ public void setCashForPaymentMethod(){
 
 
 }
-
-
-    
-
 
 
 }
