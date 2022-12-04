@@ -23,14 +23,17 @@ public class VodafoneMobile implements IMobileRecharge,Form {
         }
         return instance;
     }
+
     @Override
-    public void getData() {
+    public void GetDataFromUser() {
         System.out.println("Please Enter the Data of the next form for this service");
+
     }
+
 
     @Override
     public void Recharge( UserModel user) {
-        this.TextFields.get(this.TextFields.size()-1).getData();
+        this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
         String MobileNumber = this.TextFields.get(1).getValueString();
         Integer lastamount;
