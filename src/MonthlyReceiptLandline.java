@@ -105,6 +105,11 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
+	@Override
+	public void getData() {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

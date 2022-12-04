@@ -10,7 +10,7 @@ public class User extends IRole implements UserServices{
     public void start(boolean isAdmin) {
         super.start(isAdmin);
         while(true){
-            System.out.println("\nWelcome "+Authentication.user.getUsername());
+            System.out.println("\nWelcome "+Authentication.CurrentUser.getUsername());
             System.out.println("1. Pay Bill");
             System.out.println("2. Search Service");
             System.out.println("3. Wallet Recharge");
