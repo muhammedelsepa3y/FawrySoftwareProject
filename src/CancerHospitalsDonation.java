@@ -1,12 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
-
-public class WeMobile implements IMobileRecharge,Form {
-    private static WeMobile instance = null;
-    private boolean isAcceptedCash = false;
+public class CancerHospitalsDonation implements IDonation,Form {
+    private static CancerHospitalsDonation instance = null;
+    private boolean isAcceptedCash = true;
     private List<TextFieldDecorator> TextFields= new ArrayList<TextFieldDecorator>();
     private List<DropDownDecorator> DropDowns= new ArrayList<DropDownDecorator>();
-    private WeMobile() {
+    private CancerHospitalsDonation(){
         Form form= new TextFieldDecorator(this);
         ((TextFieldDecorator) form).setName("Amount");
         ((TextFieldDecorator) form).setValueInt(0);
@@ -16,9 +15,9 @@ public class WeMobile implements IMobileRecharge,Form {
         ((TextFieldDecorator) form).setValueString("");
         this.TextFields.add((TextFieldDecorator) form);
     }
-    public static WeMobile getInstance() {
-        if (instance == null) {
-            instance = new WeMobile();
+    public static CancerHospitalsDonation getInstance(){
+        if(instance == null){
+            instance = new CancerHospitalsDonation();
         }
         return instance;
     }
@@ -26,7 +25,6 @@ public class WeMobile implements IMobileRecharge,Form {
     @Override
     public void GetDataFromUser() {
         System.out.println("Please Enter the Data of the next form for this service");
-
     }
 
     @Override
@@ -44,7 +42,7 @@ public class WeMobile implements IMobileRecharge,Form {
                 amount=lastamount;
             }
             else if(!dis.isOverAll()){
-                if(this.GetMobileRechargeName().contains(dis.getFeatureName())){
+                if(this.GetDonationName().contains(dis.getFeatureName())){
                     System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for this service");
                     lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
                     System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
@@ -53,7 +51,6 @@ public class WeMobile implements IMobileRecharge,Form {
                 }
             }
         }
-
         PaymentFactory paymentFactory = new PaymentFactory();
         Integer count=1;
         String last = "";
@@ -82,26 +79,27 @@ public class WeMobile implements IMobileRecharge,Form {
         }
         payment = paymentFactory.GetPayment(choice3);
         if(payment.Pay(amount,Authentication.CurrentUser)){
-            System.out.println("You paid "+amount+" $ Successfully to "+this.GetMobileRechargeName());
+            System.out.println("You paid "+amount+" $ Successfully to "+this.GetDonationName());
             Authentication.CurrentUser.deductWallet(amount);
-            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetMobileRechargeName(),amount,MobileNumber,Authentication.CurrentUser));
+            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetDonationName(),amount,MobileNumber,Authentication.CurrentUser));
         }
         else{
             System.out.println("Payment is failed");
         };
     }
+
     @Override
-    public String GetMobileRechargeName() {
-        return "We Mobile";
+    public String GetDonationName() {
+        return "Cancer Hospitals Donation";
     }
+
     @Override
     public boolean isAcceptedCash() {
         return isAcceptedCash;
     }
+
     @Override
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
-
-
 }

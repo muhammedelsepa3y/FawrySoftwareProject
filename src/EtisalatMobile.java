@@ -27,6 +27,7 @@ public class EtisalatMobile implements IMobileRecharge,Form {
         System.out.println("Please Enter the Data of the next form for this service");
     }
 
+
     @Override
     public void Recharge( UserModel user) {
         this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
