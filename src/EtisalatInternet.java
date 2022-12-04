@@ -25,7 +25,7 @@ public class EtisalatInternet implements IInternetPayment,Form {
 
 
     @Override
-    public void getData() {
+    public void GetDataFromUser() {
         System.out.println("Please Enter the Data of the next form for this service");
     }
 
@@ -101,10 +101,6 @@ public class EtisalatInternet implements IInternetPayment,Form {
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
-	@Override
-	public void GetDataFromUser() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

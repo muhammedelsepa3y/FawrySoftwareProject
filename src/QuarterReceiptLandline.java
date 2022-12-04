@@ -103,9 +103,5 @@ public class QuarterReceiptLandline implements ILandlinePayment,Form{
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
-	@Override
-	public void getData() {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

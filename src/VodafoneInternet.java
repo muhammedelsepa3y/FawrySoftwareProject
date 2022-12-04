@@ -1,25 +1,24 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonthlyReceiptLandline implements ILandlinePayment,Form{
-
-    private static MonthlyReceiptLandline instance = null;
-    private boolean isAcceptedCash = true;
+public class VodafoneInternet implements IInternetPayment,Form {
+    private static VodafoneInternet instance = null;
+    private boolean isAcceptedCash = false;
     private List<TextFieldDecorator> TextFields= new ArrayList<TextFieldDecorator>();
     private List<DropDownDecorator> DropDowns= new ArrayList<DropDownDecorator>();
-    private MonthlyReceiptLandline(){
+    private VodafoneInternet() {
         Form form= new TextFieldDecorator(this);
         ((TextFieldDecorator) form).setName("Amount");
         ((TextFieldDecorator) form).setValueInt(0);
         this.TextFields.add((TextFieldDecorator) form);
         form= new TextFieldDecorator(form);
-        ((TextFieldDecorator) form).setName("Landline Number");
+        ((TextFieldDecorator) form).setName("Internet Number");
         ((TextFieldDecorator) form).setValueString("");
         this.TextFields.add((TextFieldDecorator) form);
     }
-    public static MonthlyReceiptLandline getInstance(){
-        if(instance == null){
-            instance = new MonthlyReceiptLandline();
+    public static VodafoneInternet getInstance() {
+        if (instance == null) {
+            instance = new VodafoneInternet();
         }
         return instance;
     }
@@ -31,9 +30,9 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
 
     @Override
     public void Recharge(UserModel user) {
-        this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
+        this.TextFields.get(this.TextFields.size()-1).getData();
         int amount = this.TextFields.get(0).getValueInt();
-        String Landline = this.TextFields.get(1).getValueString();
+        String InternetNumber = this.TextFields.get(1).getValueString();
         Integer lastamount;
         for(DiscountModel dis : Model.getDiscounts()){
             if (dis.isOverAll() && Authentication.CurrentUser.getTransaction().size()==0) {
@@ -43,9 +42,8 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
                 System.out.println("You will pay "+lastamount+" $ instead of "+amount+" $");
                 amount=lastamount;
             }
-
             else if(!dis.isOverAll()){
-                if(this.GetLandlineName().contains(dis.getFeatureName())){
+                if(this.GetInternetName().contains(dis.getFeatureName())){
                     System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for this service");
                     lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
                     System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
@@ -82,30 +80,28 @@ public class MonthlyReceiptLandline implements ILandlinePayment,Form{
         }
         payment = paymentFactory.GetPayment(choice3);
         if(payment.Pay(amount,Authentication.CurrentUser)){
-            System.out.println("You paid "+amount+" $ Successfully to "+this.GetLandlineName());
+            System.out.println("You paid "+amount+" $ Successfully to "+this.GetInternetName());
             Authentication.CurrentUser.deductWallet(amount);
-            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetLandlineName(),amount,Landline,Authentication.CurrentUser));
+            Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetInternetName(),amount,InternetNumber,Authentication.CurrentUser));
         }
         else{
             System.out.println("Payment is failed");
         };
     }
 
-    @Override
-    public String GetLandlineName() {
-        return "Monthly Receipt Landline";
+
+
+    public String GetInternetName() {
+        return "Vodafone Internet";
     }
 
-    @Override
     public boolean isAcceptedCash() {
-        return isAcceptedCash;
+        return this.isAcceptedCash;
     }
 
-    @Override
     public void setAcceptedCash(boolean isAcceptedCash) {
         this.isAcceptedCash = isAcceptedCash;
     }
 
-
-
 }
+
