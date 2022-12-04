@@ -28,3 +28,10 @@
 /LandlineFactory.class
 /TextFieldDecorator.class
 /UserServices.class
+/EtisalatMobile.class
+/ILandlinePayment.class
+/IMobileRecharge.class
+/IMobileRechargeFactory.class
+/MobileRechargeFactory.class
+/MonthlyReceiptLandline.class
+/OrangeMobile.class
