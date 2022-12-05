@@ -58,10 +58,6 @@ public class TextFieldDecorator implements Form {
     public Boolean getValueBoolean() {
         return valueBoolean;
     }
-	@Override
-	public void getData() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }
