@@ -31,7 +31,7 @@ public class WeInternet implements IInternetPayment,Form {
 
     @Override
     public void Recharge(UserModel user) {
-        this.TextFields.get(this.TextFields.size()-1).getData();
+        this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
         String InternetNumber = this.TextFields.get(1).getValueString();
         Integer lastamount;
