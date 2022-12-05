@@ -31,7 +31,7 @@ public class Admin extends IRole implements AdminServices {
                     setPaymentActivate();
                     break;
                 case 5:
-                   // setCashForPaymentMethod();
+                    setCashForPaymentMethod();
                     break;
                 case 6:
                     getNotCheckedRefundsRequests();
@@ -224,6 +224,47 @@ public void getNotCheckedRefundsRequests(){
 
 }
 
+    public void setCashForPaymentMethod(){
+
+        System.out.print("");
+        FawryFactory fawryFactory = new FawryFactory();
+        List<String> ser = fawryFactory.GetServices();
+        for(int i=0;i<ser.size();i++){
+            System.out.println(i+1+". "+ser.get(i));
+        }
+        System.out.println("Or 0 to go back");
+        int choice = InputDataHandle.UserInput(0, ser.size());
+        if(choice==0){
+            return;
+        }
+        PaymentFactory paymentFactory=new PaymentFactory();
+        paymentFactory.GetPayment(3).setActivated(true);
+        System.out.println("1. Accept Cash");
+        System.out.println("2. Don't Accept Cash");
+        System.out.println("3. Go Back");
+        int choicee = InputDataHandle.UserInput(1, 3);
+        if(choicee==3){
+            return;
+        }
+        boolean isAcceptCash = choicee == 1;
+        if(choice<5){
+            MobileRechargeFactory mobileRechargeFactory=new MobileRechargeFactory();
+            mobileRechargeFactory.GetMobileRecharge(choice-1).setAcceptedCash(isAcceptCash);
+        }else if(choice<9){
+            InternetFactory internetFactory=new InternetFactory();
+            internetFactory.GetInternetPayment(choice-5).setAcceptedCash(isAcceptCash);
+        }else if(choice<11){
+            DonationFactory donationFactory=new DonationFactory();
+            donationFactory.GetDonation(choice-9).setAcceptedCash(isAcceptCash);
+        }else if(choice<13){
+            LandlineFactory landlineFactory=new LandlineFactory();
+            landlineFactory.GetLandLinePayment(choice-11).setAcceptedCash(isAcceptCash);
+
+        }
+        System.out.println("Cash status changed successfully for "+ser.get(choice-1));
+        return;
+
+    }
 
 
 
