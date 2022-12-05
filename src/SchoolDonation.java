@@ -32,25 +32,6 @@ public class SchoolDonation implements IDonation,Form {
         this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
         String MobileNumber = this.TextFields.get(1).getValueString();
-        Integer lastamount;
-        for(DiscountModel dis : Model.getDiscounts()){
-            if (dis.isOverAll() && Authentication.CurrentUser.getTransaction().size()==0) {
-                System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for first transaction");
-                lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
-                System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
-                System.out.println("You will pay "+lastamount+" $ instead of "+amount+" $");
-                amount=lastamount;
-            }
-            else if(!dis.isOverAll()){
-                if(this.GetDonationName().contains(dis.getFeatureName())){
-                    System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for this service");
-                    lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
-                    System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
-                    System.out.println("You will pay "+lastamount+" $ instead of "+amount+" $");
-                    amount=lastamount;
-                }
-            }
-        }
         PaymentFactory paymentFactory = new PaymentFactory();
         Integer count=1;
         String last = "";
@@ -74,13 +55,11 @@ public class SchoolDonation implements IDonation,Form {
         int choice3 = InputDataHandle.UserInput(1, count-1);
         while (!paymentFactory.GetPayment(choice3).isActivated() || (choice3==3 &&!this.isAcceptedCash()) ) {
             System.out.println("This payment is not activated");
-            System.out.println("Please enter your choice:");
             choice3 = InputDataHandle.UserInput(1, count-1);
         }
         payment = paymentFactory.GetPayment(choice3);
         if(payment.Pay(amount,Authentication.CurrentUser)){
             System.out.println("You paid "+amount+" $ Successfully to "+this.GetDonationName());
-            Authentication.CurrentUser.deductWallet(amount);
             Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetDonationName(),amount,MobileNumber,Authentication.CurrentUser));
         }
         else{

@@ -31,7 +31,7 @@ public class Admin extends IRole implements AdminServices {
                     setPaymentActivate();
                     break;
                 case 5:
-                    setCashForPaymentMethod();
+                    setCashForEachService();
                     break;
                 case 6:
                     getNotCheckedRefundsRequests();
@@ -62,10 +62,12 @@ public class Admin extends IRole implements AdminServices {
             FawryFactory fawryFactory = new FawryFactory();
             List<String> features = fawryFactory.GetFeatures();
             for (String feature : features) {
+                if (i==4)
+                    break;
                 System.out.println(i+". "+feature);
                 i++;
             }
-            int feature = InputDataHandle.UserInput(1, i-1);
+            int feature = InputDataHandle.UserInput(1, i-2);
             NameOfFeature = features.get(feature-1);
         }
         System.out.println("Enter the discount percentage: ");
@@ -195,9 +197,10 @@ public void getNotCheckedRefundsRequests(){
             System.out.println("Reason: " + refundModel.getReason());
             System.out.println("1. Accept");
             System.out.println("2. Reject");
-            System.out.println("3. Back");
+            System.out.println("3. Go to next refund request");
+            System.out.println("4. Back");
             System.out.println("-----------------------");
-            int choice=InputDataHandle.UserInput(1,3);
+            int choice=InputDataHandle.UserInput(1,4);
             if (choice == 1) {
                 refundModel.setChecked(true);
                 refundMoneyToUser(refundModel);
@@ -209,9 +212,11 @@ public void getNotCheckedRefundsRequests(){
                 refundModel.setApproved(false);
                 System.out.println("Refund Rejected");
             }else if(choice==3){
+               continue;
+            }
+            else{
                 return;
             }
-
             System.out.println("-----------------------");
         }
 
@@ -224,44 +229,115 @@ public void getNotCheckedRefundsRequests(){
 
 }
 
-    public void setCashForPaymentMethod(){
-
-        System.out.print("");
-        FawryFactory fawryFactory = new FawryFactory();
-        List<String> ser = fawryFactory.GetServices();
-        for(int i=0;i<ser.size();i++){
-            System.out.println(i+1+". "+ser.get(i));
-        }
-        System.out.println("Or 0 to go back");
-        int choice = InputDataHandle.UserInput(0, ser.size());
-        if(choice==0){
-            return;
-        }
+    public void setCashForEachService(){
         PaymentFactory paymentFactory=new PaymentFactory();
         paymentFactory.GetPayment(3).setActivated(true);
-        System.out.println("1. Accept Cash");
-        System.out.println("2. Don't Accept Cash");
-        System.out.println("3. Go Back");
-        int choicee = InputDataHandle.UserInput(1, 3);
-        if(choicee==3){
-            return;
-        }
-        boolean isAcceptCash = choicee == 1;
-        if(choice<5){
-            MobileRechargeFactory mobileRechargeFactory=new MobileRechargeFactory();
-            mobileRechargeFactory.GetMobileRecharge(choice-1).setAcceptedCash(isAcceptCash);
-        }else if(choice<9){
-            InternetFactory internetFactory=new InternetFactory();
-            internetFactory.GetInternetPayment(choice-5).setAcceptedCash(isAcceptCash);
-        }else if(choice<11){
-            DonationFactory donationFactory=new DonationFactory();
-            donationFactory.GetDonation(choice-9).setAcceptedCash(isAcceptCash);
-        }else if(choice<13){
-            LandlineFactory landlineFactory=new LandlineFactory();
-            landlineFactory.GetLandLinePayment(choice-11).setAcceptedCash(isAcceptCash);
+        System.out.print("");
+        FawryFactory fawryFactory = new FawryFactory();
 
+        int i=0;
+        List<String> features = fawryFactory.GetFeatures();
+        for (String feature : features) {
+            System.out.println(++i + ". " + feature);
         }
-        System.out.println("Cash status changed successfully for "+ser.get(choice-1));
+        System.out.println("0. Back");
+        int choice=InputDataHandle.UserInput(0, features.size());
+        switch (choice) {
+            case 0:
+                return;
+            case 1:
+                int j = 1;
+                MobileRechargeFactory mobileRechargeFactory = new MobileRechargeFactory();
+                IMobileRecharge temp = mobileRechargeFactory.GetMobileRecharge(j);
+                while (temp != null) {
+                    System.out.println(j + ". " + temp.GetMobileRechargeName()+"   is accept cash: "+temp.isAcceptedCash());
+                    j++;
+                    temp = mobileRechargeFactory.GetMobileRecharge(j);
+                }
+                System.out.println("0. Back");
+                int choice2 = InputDataHandle.UserInput(0, j - 1);
+                if (choice2 == 0)
+                    return;
+                System.out.println("1. Accept Cash for this service");
+                System.out.println("2. Reject Cash for this service");
+                System.out.println("3. Back");
+                int choice3 = InputDataHandle.UserInput(1, 3);
+                if (choice3==3)
+                    return;
+                boolean acceptCash = choice3 == 1;
+                mobileRechargeFactory.GetMobileRecharge(choice2).setAcceptedCash(acceptCash);
+                System.out.println("Cash for this service is "+(acceptCash?"Accepted":"Rejected"));
+                break;
+            case 2:
+                j = 1;
+                InternetFactory internetFactory = new InternetFactory();
+                IInternetPayment temp2 = internetFactory.GetInternetPayment(j);
+                while (temp2 != null) {
+                    System.out.println(j + ". " + temp2.GetInternetName()+"   is accept cash: "+temp2.isAcceptedCash());
+                    j++;
+                    temp2 = internetFactory.GetInternetPayment(j);
+                }
+                System.out.println("0. Back");
+                choice2 = InputDataHandle.UserInput(0, j - 1);
+                if (choice2 == 0)
+                    return;
+                System.out.println("1. Accept Cash for this service");
+                System.out.println("2. Reject Cash for this service");
+                System.out.println("3. Back");
+                choice3 = InputDataHandle.UserInput(1, 3);
+                if (choice3==3)
+                    return;
+                acceptCash = choice3 == 1;
+                internetFactory.GetInternetPayment(choice2).setAcceptedCash(acceptCash);
+                System.out.println("Cash for this service is "+(acceptCash?"Accepted":"Rejected"));
+                break;
+            case 3:
+                j = 1;
+                LandlineFactory landlineFactory = new LandlineFactory();
+                ILandlinePayment temp3 = landlineFactory.GetLandLinePayment(j);
+                while (temp3 != null) {
+                    System.out.println(j + ". " + temp3.GetLandlineName()+"   is accept cash: "+temp3.isAcceptedCash());
+                    j++;
+                    temp3 = landlineFactory.GetLandLinePayment(j);
+                }
+                System.out.println("0. Back");
+                choice2 = InputDataHandle.UserInput(0, j - 1);
+                if (choice2 == 0)
+                    return;
+                System.out.println("1. Accept Cash for this service");
+                System.out.println("2. Reject Cash for this service");
+                System.out.println("3. Back");
+                choice3 = InputDataHandle.UserInput(1, 3);
+                if (choice3==3)
+                    return;
+                acceptCash = choice3 == 1;
+                landlineFactory.GetLandLinePayment(choice2).setAcceptedCash(acceptCash);
+                System.out.println("Cash for this service is "+(acceptCash?"Accepted":"Rejected"));
+                break;
+            case 4:
+                j = 1;
+                DonationFactory donationFactory = new DonationFactory();
+                IDonation temp4 = donationFactory.GetDonation(j);
+                while (temp4 != null) {
+                    System.out.println(j + ". " + temp4.GetDonationName()+"   is accept cash: "+temp4.isAcceptedCash());
+                    j++;
+                    temp4 = donationFactory.GetDonation(j);
+                }
+                System.out.println("0. Back");
+                choice2 = InputDataHandle.UserInput(0, j - 1);
+                if (choice2 == 0)
+                    return;
+                System.out.println("1. Accept Cash for this service");
+                System.out.println("2. Reject Cash for this service");
+                System.out.println("3. Back");
+                choice3 = InputDataHandle.UserInput(1, 3);
+                if (choice3==3)
+                    return;
+                acceptCash = choice3 == 1;
+                donationFactory.GetDonation(choice2).setAcceptedCash(acceptCash);
+                System.out.println("Cash for this service is "+(acceptCash?"Accepted":"Rejected"));
+                break;
+        }
         return;
 
     }

@@ -33,24 +33,32 @@ public class QuarterReceiptLandline implements ILandlinePayment,Form{
         this.TextFields.get(this.TextFields.size()-1).GetDataFromUser();
         int amount = this.TextFields.get(0).getValueInt();
         String Landline = this.TextFields.get(1).getValueString();
-        Integer lastamount;
+        int AllDiscount=0;
+        int discountAmount=0;
+        boolean disfound=false;
         for(DiscountModel dis : Model.getDiscounts()){
             if (dis.isOverAll() && Authentication.CurrentUser.getTransaction().size()==0) {
+                disfound=true;
                 System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for first transaction");
-                lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
+                discountAmount = (amount * dis.getDiscountPercentage() / 100);
                 System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
-                System.out.println("You will pay "+lastamount+" $ instead of "+amount+" $");
-                amount=lastamount;
+                AllDiscount+=discountAmount;
             }
             else if(!dis.isOverAll()){
                 if(this.GetLandlineName().contains(dis.getFeatureName())){
+                    disfound=true;
                     System.out.println("You have a "+ dis.getDiscountPercentage()+" % discount for this service");
-                    lastamount = amount - (amount * dis.getDiscountPercentage() / 100);
+                    discountAmount =(amount * dis.getDiscountPercentage() / 100);
                     System.out.println("Now You will have discount "+(amount * dis.getDiscountPercentage() / 100)+ " $");
-                    System.out.println("You will pay "+lastamount+" $ instead of "+amount+" $");
-                    amount=lastamount;
+                    AllDiscount+=discountAmount;
                 }
             }
+            System.out.println("----------------------------------------");
+        }
+        if(disfound){
+            System.out.println("You will have discount "+AllDiscount+ " $");
+            System.out.println("Now You will pay "+(amount-AllDiscount)+ " $ for this service instead of "+amount+" $");
+            amount-=AllDiscount;
         }
         PaymentFactory paymentFactory = new PaymentFactory();
         Integer count=1;
@@ -75,13 +83,11 @@ public class QuarterReceiptLandline implements ILandlinePayment,Form{
         int choice3 = InputDataHandle.UserInput(1, count-1);
         while (!paymentFactory.GetPayment(choice3).isActivated() || (choice3==3 &&!this.isAcceptedCash()) ) {
             System.out.println("This payment is not activated");
-            System.out.println("Please enter your choice:");
             choice3 = InputDataHandle.UserInput(1, count-1);
         }
         payment = paymentFactory.GetPayment(choice3);
         if(payment.Pay(amount,Authentication.CurrentUser)){
             System.out.println("You paid "+amount+" $ Successfully to "+this.GetLandlineName());
-            Authentication.CurrentUser.deductWallet(amount);
             Authentication.CurrentUser.addTransaction(new TransactionModel(this.GetLandlineName(),amount,Landline,Authentication.CurrentUser));
         }
         else{

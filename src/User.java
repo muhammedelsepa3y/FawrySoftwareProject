@@ -19,13 +19,7 @@ public class User extends IRole implements UserServices{
             System.out.println("6. Get Wallet Balance");
             System.out.println("7. Check Refund Status");
             System.out.println("8. Logout");
-            Scanner scanner = new Scanner(System.in);
-            int choice = scanner.nextInt();
-            while (choice < 1 || choice > 8) {
-                System.out.println("Invalid choice");
-                System.out.println("Please enter your choice:");
-                choice = scanner.nextInt();
-            }
+            int choice = InputDataHandle.UserInput(1, 8);
             switch (choice) {
                 case 1:
                     this.payBill();
@@ -196,7 +190,7 @@ public class User extends IRole implements UserServices{
             flag = true;
             System.out.println("Transaction Id: "+i.getId());
             System.out.println(i.getServiceName());
-            System.out.println(i.getAmount());
+            System.out.println(i.getAmount()+" $");
             System.out.println(i.getDate());
             System.out.println("-----------------------");
         }

@@ -26,18 +26,18 @@ public class FawryFactory implements IFawryFactory{
             temp = mobileRechargeFactory.GetMobileRecharge(j);
         }
         j=1;
-        IDonation temp2=donationFactory.GetDonation(j);
-        while (temp2 != null) {
-            services.add(temp2.GetDonationName());
-            j++;
-            temp2 = donationFactory.GetDonation(j);
-        }
-        j=1;
         IInternetPayment temp3=internetFactory.GetInternetPayment(j);
         while (temp3 != null) {
             services.add(temp3.GetInternetName());
             j++;
             temp3 = internetFactory.GetInternetPayment(j);
+        }
+        j=1;
+        IDonation temp2=donationFactory.GetDonation(j);
+        while (temp2 != null) {
+            services.add(temp2.GetDonationName());
+            j++;
+            temp2 = donationFactory.GetDonation(j);
         }
         j=1;
         ILandlinePayment temp4=landlineFactory.GetLandLinePayment(j);

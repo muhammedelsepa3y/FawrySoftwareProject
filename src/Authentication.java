@@ -86,8 +86,10 @@ public class Authentication {
         String password = scanner.nextLine();
         while(checkRegister(Email,password,isAdmin) == null) {
             System.out.println("Invalid Email or password");
-            System.out.println("if you don't have an account enter 0 else enter any number");
-            if (scanner.nextLine() .equals("0")) {
+            System.out.println("1. Don't have an account? Register first");
+            System.out.println("2. Try again");
+            int c=InputDataHandle.UserInput(1,2);
+            if(c==1) {
                 Register(isAdmin);
             }
             System.out.println("Enter your Email");
