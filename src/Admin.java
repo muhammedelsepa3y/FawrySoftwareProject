@@ -177,11 +177,6 @@ public class Admin extends IRole implements AdminServices {
             return;
         }
     }
-public void refundMoneyToUser(RefundModel refundModel){
-    refundModel.getTransaction().getUser().addWallet(refundModel.getTransaction().getAmount());
-    refundModel.getTransaction().getUser().RemoveTransaction(refundModel.getTransaction());
-    return;
-}
 
 public void getNotCheckedRefundsRequests(){
     boolean found = false;
@@ -203,7 +198,8 @@ public void getNotCheckedRefundsRequests(){
             int choice=InputDataHandle.UserInput(1,4);
             if (choice == 1) {
                 refundModel.setChecked(true);
-                refundMoneyToUser(refundModel);
+                refundModel.getTransaction().getUser().addWallet(refundModel.getTransaction().getAmount());
+                refundModel.getTransaction().getUser().RemoveTransaction(refundModel.getTransaction());
                 refundModel.setApproved(true);
                 System.out.println(refundModel.getTransaction().getAmount() + "$ is refunded to " + refundModel.getTransaction().getUser().getUsername());
                 System.out.println("Refund Accepted");

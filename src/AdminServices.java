@@ -7,6 +7,5 @@ public interface AdminServices {
     public void getNotCheckedRefundsRequests();
     public void RemoveDiscount();
     public void getAllDiscounts();
-    public void refundMoneyToUser(RefundModel refundModel);
 
 }
