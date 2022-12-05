@@ -56,7 +56,20 @@ public class User extends IRole implements UserServices{
     }
     @Override
     public void payBill() {
-       int j=1;
+        FawryFactory fawryFactory = new FawryFactory();
+        int i=0;
+        List<String> features = fawryFactory.GetFeatures();
+        for (String feature : features) {
+            System.out.println(++i + ". " + feature);
+        }
+        System.out.println("0. Back");
+        int choice=InputDataHandle.UserInput(0, features.size());
+
+        switch (choice){
+            case 0:
+                return;
+            case 1:
+                int j=1;
                 MobileRechargeFactory mobileRechargeFactory = new MobileRechargeFactory();
                 IMobileRecharge temp=mobileRechargeFactory.GetMobileRecharge(j);
                 while (temp != null) {
@@ -70,15 +83,76 @@ public class User extends IRole implements UserServices{
                     return;
                 temp = mobileRechargeFactory.GetMobileRecharge(choice2);
                 temp.Recharge(Authentication.CurrentUser);
-
-        
-
+                break;
+            case 2:
+                InternetFactory internetFactory = new InternetFactory();
+                j=1;
+                IInternetPayment temp3=internetFactory.GetInternetPayment(j);
+                while (temp3 != null) {
+                    System.out.println(j + ". " + temp3.GetInternetName());
+                    j++;
+                    temp3 = internetFactory.GetInternetPayment(j);
+                }
+                System.out.println("0. Back");
+                choice2=InputDataHandle.UserInput(0, j-1);
+                if(choice2==0)
+                    return;
+                temp3= internetFactory.GetInternetPayment(choice2);
+                temp3.Recharge(Authentication.CurrentUser);
+                break;
+            case 3:
+                LandlineFactory landlineFactory = new LandlineFactory();
+                j=1;
+                ILandlinePayment temp4=landlineFactory.GetLandLinePayment(j);
+                while (temp4!= null) {
+                    System.out.println(j + ". " + temp4.GetLandlineName());
+                    j++;
+                    temp4 = landlineFactory.GetLandLinePayment(j);
+                }
+                System.out.println("0. Back");
+                choice2=InputDataHandle.UserInput(0, j-1);
+                if(choice2==0)
+                    return;
+                temp4 = landlineFactory.GetLandLinePayment(choice2);
+                temp4.Recharge( Authentication.CurrentUser);
+                break;
+            case 4:
+                DonationFactory donationFactory = new DonationFactory();
+                j=1;
+                IDonation temp5=donationFactory.GetDonation(j);
+                while (temp5 != null) {
+                    System.out.println(j + ". " + temp5.GetDonationName());
+                    j++;
+                    temp5 = donationFactory.GetDonation(j);
+                }
+                System.out.println("0. Back");
+                choice2=InputDataHandle.UserInput(0, j-1);
+                if(choice2==0)
+                    return;
+                temp5 = donationFactory.GetDonation(choice2);
+                temp5.Recharge(Authentication.CurrentUser);
+                break;
+        }
     }
 	@Override
 	public void searchService() {
-		
-		
-	}
+        System.out.println("Enter the service name:");
+        Scanner scanner = new Scanner(System.in);
+        String serviceName = scanner.nextLine();
+        FawryFactory fawryFactory = new FawryFactory();
+        List<String> services = fawryFactory.GetServices();
+        boolean found = false;
+        for (String FE : services) {
+            if (FE.contains(serviceName)) {
+                System.out.println(FE+" is available");
+            }
+        }
+        if (!found) {
+            System.out.println("Service not found");
+        }
+        return;
+
+    }
     @Override
     public void walletRecharge() {
         System.out.println("Enter the amount:");
