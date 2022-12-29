@@ -1,7 +1,7 @@
-package com.fci.advanced.sw.fawrysoftwaresystem.PaymentMethods;
+package FawrySoftwareSystem.Phase2.PaymentMethods;
 
-import com.fci.advanced.sw.fawrysoftwaresystem.authentication.Model.TransactionModel;
-import com.fci.advanced.sw.fawrysoftwaresystem.authentication.Model.UserModel;
+import FawrySoftwareSystem.Phase2.Authentication.Model.TransactionModel;
+import FawrySoftwareSystem.Phase2.Authentication.Model.UserModel;
 
 public interface IPayment {
     public String pay(TransactionModel transactionModel, UserModel user);

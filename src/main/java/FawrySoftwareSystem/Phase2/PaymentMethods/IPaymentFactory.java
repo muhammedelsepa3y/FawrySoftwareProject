@@ -1,4 +1,6 @@
-package com.fci.advanced.sw.fawrysoftwaresystem.PaymentMethods;
+package FawrySoftwareSystem.Phase2.PaymentMethods;
+
+import FawrySoftwareSystem.Phase2.PaymentMethods.IPayment;
 
 public interface IPaymentFactory {
     public IPayment getPaymentMethod(String paymentMethod);
