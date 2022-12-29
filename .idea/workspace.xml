@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97c83f22-c582-4ebe-9711-f3b66eca15fc" name="Changes" comment="update in admin">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="97c83f22-c582-4ebe-9711-f3b66eca15fc" name="Changes" comment="add cash payment">
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Controller/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Repository/AuthRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Repository/AuthRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -24,13 +32,16 @@
     </option>
   </component>
   <component name="ProjectId" id="2IUnuqXMsh2mwK6XJUvZG0hMT8B" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -64,7 +75,7 @@
       <updated>1670245266732</updated>
       <workItem from="1670245268355" duration="6160000" />
       <workItem from="1672309934406" duration="749000" />
-      <workItem from="1672330319672" duration="635000" />
+      <workItem from="1672330319672" duration="1140000" />
     </task>
     <task id="LOCAL-00001" summary="last commit in code &#10;add default admin and user in main">
       <created>1670249037976</created>
@@ -80,15 +91,24 @@
       <option name="project" value="LOCAL" />
       <updated>1670250182895</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add cash payment">
+      <created>1672331898300</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672331898300</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="last commit in code &#10;add default admin and user in main" />
     <MESSAGE value="update in admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="update in admin" />
+    <MESSAGE value="add cash payment" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cash payment" />
   </component>
 </project>

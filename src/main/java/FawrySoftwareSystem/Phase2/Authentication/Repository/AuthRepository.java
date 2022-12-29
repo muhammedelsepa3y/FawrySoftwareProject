@@ -1,6 +1,6 @@
-package com.fci.advanced.sw.fawrysoftwaresystem.authentication.Repository;
+package FawrySoftwareSystem.Phase2.Authentication.Repository;
 
-import com.fci.advanced.sw.fawrysoftwaresystem.authentication.Model.UserModel;
+import FawrySoftwareSystem.Phase2.Authentication.Model.UserModel;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.UUID;
 @Component
 public class AuthRepository {
 
-    private   List<UserModel> users;
+    private List<UserModel> users;
     private AuthRepository() {
         users = new ArrayList<>();
     }

@@ -1,15 +1,12 @@
-package com.fci.advanced.sw.fawrysoftwaresystem.authentication.Controller;
+package FawrySoftwareSystem.Phase2.Authentication.Controller;
 
-import com.fci.advanced.sw.fawrysoftwaresystem.authentication.Services.AuthenticationServices;
-import com.fci.advanced.sw.fawrysoftwaresystem.authentication.Model.UserModel;
+import FawrySoftwareSystem.Phase2.Authentication.Model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-// @RestController
-// @Service
 @RestController
 public class AuthenticationController {
 
