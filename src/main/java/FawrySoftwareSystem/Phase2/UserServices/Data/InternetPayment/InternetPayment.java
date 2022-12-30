@@ -1,39 +1,39 @@
-package FawrySoftwareSystem.Phase2.UserServices.Data.MobileRecharge;
+package FawrySoftwareSystem.Phase2.UserServices.Data.InternetPayment;
 
 
 import FawrySoftwareSystem.Phase2.Authentication.Model.TransactionModel;
 import FawrySoftwareSystem.Phase2.Authentication.Model.UserModel;
 import FawrySoftwareSystem.Phase2.PaymentMethods.IPayment;
 
-public abstract class MobileRecharge  {
-    private String mobileNumber;
-    private double amount;
-
+public abstract class InternetPayment {
+    String PhoneNumber;
+    double Amount;
+    public  static boolean isAcceptCash=false;
     private String companyName;
-    public static boolean isAcceptCash=false;
-    public MobileRecharge(String mobileNumber,double amount,String companyNamy){
-        this.mobileNumber=mobileNumber;
-        this.amount=amount;
+    public InternetPayment(String PhoneNumber,double amount,String companyNamy){
+        this.PhoneNumber=PhoneNumber;
+        this.Amount=amount;
         this.companyName=companyNamy;
     }
+
     public String getName(){
-        return "Mobile Recharge";
+        return "Internet Payment";
     };
 
     public double getAmount() {
-        return amount;
-    }
-
-    public String getMobileNumber() {
-        return mobileNumber;
+        return Amount;
     }
 
     public void setAmount(double amount) {
-        this.amount = amount;
+        Amount = amount;
     }
 
-    public void setMobileNumber(String number) {
-        this.mobileNumber = number;
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
     }
 
     public void setAcceptCash(boolean acceptCash) {

@@ -1,7 +1,7 @@
-package com.fci.advanced.sw.fawrysoftwaresystem.authentication.Services;
+package FawrySoftwareSystem.Phase2.Authentication.Services;
 
-import com.fci.advanced.sw.fawrysoftwaresystem.authentication.Repository.AuthRepository;
-import com.fci.advanced.sw.fawrysoftwaresystem.authentication.Model.UserModel;
+import FawrySoftwareSystem.Phase2.Authentication.Model.UserModel;
+import FawrySoftwareSystem.Phase2.Authentication.Repository.AuthRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
