@@ -1,23 +1,22 @@
-package FawrySoftwareSystem.Phase2.UserServices.Data.InternetPayment;
+package FawrySoftwareSystem.Phase2.UserServices.Data.LandlinePayment;
 
 
 import FawrySoftwareSystem.Phase2.Authentication.Model.TransactionModel;
 import FawrySoftwareSystem.Phase2.Authentication.Model.UserModel;
 import FawrySoftwareSystem.Phase2.PaymentMethods.IPayment;
 
-public abstract class InternetPayment {
+public abstract class LandlinePayment {
     String PhoneNumber;
     double Amount;
-    public  static boolean isAcceptCash=false;
     private String companyName;
-    public InternetPayment(String PhoneNumber,double amount,String companyNamy){
+    public  static boolean isAcceptCash=false;
+    public LandlinePayment(String PhoneNumber,double amount,String companyNamy){
         this.PhoneNumber=PhoneNumber;
         this.Amount=amount;
         this.companyName=companyNamy;
     }
-
     public String getName(){
-        return "Internet Payment";
+        return "Landline Payment";
     };
 
     public double getAmount() {
@@ -36,17 +35,16 @@ public abstract class InternetPayment {
         PhoneNumber = phoneNumber;
     }
 
+    public boolean isAcceptCash() {
+        return isAcceptCash;
+    }
+
     public void setAcceptCash(boolean acceptCash) {
         isAcceptCash = acceptCash;
     }
-
-    public boolean isAcceptCash() {
-        return isAcceptCash;
-    }}
-
 //    public String pay(TransactionModel transaction, UserModel user){
-////        PaymentFactory paymentFactory = new PaymentFactory();
-////        IPayment payy=paymentFactory.getPaymentMethod(transaction.getPaymentMethod());
+//        PaymentFactory paymentFactory = new PaymentFactory();
+//        IPayment payy=paymentFactory.getPaymentMethod(transaction.getPaymentMethod());
 //        if(transaction.getPaymentMethod().equals("Cash")){
 //            if(!isAcceptCash){
 //                return "Cash is not accepted";
@@ -57,4 +55,4 @@ public abstract class InternetPayment {
 //            return payy.pay(transaction, user) + " for " + transaction.getServiceName() ;
 //        }
 //    }
-//}
+}

@@ -43,17 +43,17 @@ public abstract class MobileRecharge  {
     public boolean isAcceptCash() {
         return isAcceptCash;
     }
-    public String pay(TransactionModel transaction, UserModel user){
-        PaymentFactory paymentFactory = new PaymentFactory();
-        IPayment payy=paymentFactory.getPaymentMethod(transaction.getPaymentMethod());
-        if(transaction.getPaymentMethod().equals("Cash")){
-            if(!isAcceptCash){
-                return "Cash is not accepted";
-            }
-            return payy.pay(transaction, user) + " for " + transaction.getServiceName() ;
-        }
-        else{
-            return payy.pay(transaction, user) + " for " + transaction.getServiceName() ;
-        }
-    }
+//    public String pay(TransactionModel transaction, UserModel user){
+//        PaymentFactory paymentFactory = new PaymentFactory();
+//        IPayment payy=paymentFactory.getPaymentMethod(transaction.getPaymentMethod());
+//        if(transaction.getPaymentMethod().equals("Cash")){
+//            if(!isAcceptCash){
+//                return "Cash is not accepted";
+//            }
+//            return payy.pay(transaction, user) + " for " + transaction.getServiceName() ;
+//        }
+//        else{
+//            return payy.pay(transaction, user) + " for " + transaction.getServiceName() ;
+//        }
+//    }
 }

@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97c83f22-c582-4ebe-9711-f3b66eca15fc" name="Changes" comment="some update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/EtisalatInternetPayment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/InternetPayment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/OrangeInternetPayment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/VodafoneInternetPayment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/WeInternetPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Controller/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Services/AuthenticationServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Services/AuthenticationServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/InternetPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/InternetPayment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/MobileRecharge/MobileRecharge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/MobileRecharge/MobileRecharge.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +19,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -46,23 +42,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/muham/Desktop/fawry-software-system/FawrySoftwareProject/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
-    "spring.configuration.checksum": "b1875776ff4ed4e8e098b65581e40770",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/muham/Desktop/fawry-software-system/FawrySoftwareProject/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b1875776ff4ed4e8e098b65581e40770&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Phase2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Phase2" />
@@ -118,6 +114,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
