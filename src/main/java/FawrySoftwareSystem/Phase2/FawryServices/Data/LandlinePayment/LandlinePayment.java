@@ -1,9 +1,10 @@
-package FawrySoftwareSystem.Phase2.UserServices.Data.LandlinePayment;
+package FawrySoftwareSystem.Phase2.FawryServices.Data.LandlinePayment;
 
 
 import FawrySoftwareSystem.Phase2.Authentication.Model.TransactionModel;
 import FawrySoftwareSystem.Phase2.Authentication.Model.UserModel;
 import FawrySoftwareSystem.Phase2.PaymentMethods.IPayment;
+import FawrySoftwareSystem.Phase2.PaymentMethods.PaymentFactory;
 
 public abstract class LandlinePayment {
     String PhoneNumber;
@@ -42,17 +43,17 @@ public abstract class LandlinePayment {
     public void setAcceptCash(boolean acceptCash) {
         isAcceptCash = acceptCash;
     }
-//    public String pay(TransactionModel transaction, UserModel user){
-//        PaymentFactory paymentFactory = new PaymentFactory();
-//        IPayment payy=paymentFactory.getPaymentMethod(transaction.getPaymentMethod());
-//        if(transaction.getPaymentMethod().equals("Cash")){
-//            if(!isAcceptCash){
-//                return "Cash is not accepted";
-//            }
-//            return payy.pay(transaction, user) + " for " + transaction.getServiceName() ;
-//        }
-//        else{
-//            return payy.pay(transaction, user) + " for " + transaction.getServiceName() ;
-//        }
-//    }
+    public String pay(TransactionModel transaction, UserModel user){
+        PaymentFactory paymentFactory = new PaymentFactory();
+        IPayment payy=paymentFactory.getPaymentMethod(transaction.getPaymentMethod());
+        if(transaction.getPaymentMethod().equals("Cash")){
+            if(!isAcceptCash){
+                return "Cash is not accepted";
+            }
+            return payy.pay(transaction, user) + " for " + transaction.getServiceName() ;
+        }
+        else{
+            return payy.pay(transaction, user) + " for " + transaction.getServiceName() ;
+        }
+    }
 }

@@ -1,6 +1,6 @@
-package com.fci.advanced.sw.fawrysoftwaresystem.PaymentMethods;
+package FawrySoftwareSystem.Phase2.PaymentMethods;
 
-import com.fci.advanced.sw.fawrysoftwaresystem.PaymentMethods.IPaymentFactory;
+import FawrySoftwareSystem.Phase2.PaymentMethods.IPaymentFactory;
 
 public class PaymentFactory implements IPaymentFactory {
 

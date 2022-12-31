@@ -1,4 +1,4 @@
-package FawrySoftwareSystem.Phase2.UserServices.Data.MobileRecharge;
+package FawrySoftwareSystem.Phase2.FawryServices.Data.MobileRecharge;
 
 public class WeMobileRecharge extends MobileRecharge {
 

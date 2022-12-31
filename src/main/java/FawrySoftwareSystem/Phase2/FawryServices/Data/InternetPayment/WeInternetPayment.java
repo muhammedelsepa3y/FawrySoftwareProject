@@ -1,4 +1,4 @@
-package FawrySoftwareSystem.Phase2.UserServices.Data.InternetPayment;
+package FawrySoftwareSystem.Phase2.FawryServices.Data.InternetPayment;
 
 public class WeInternetPayment extends InternetPayment {
     public WeInternetPayment(String PhoneNumber, double amount) {

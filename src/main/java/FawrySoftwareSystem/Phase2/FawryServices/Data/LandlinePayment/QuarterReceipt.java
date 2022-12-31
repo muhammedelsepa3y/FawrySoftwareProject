@@ -1,4 +1,4 @@
-package FawrySoftwareSystem.Phase2.UserServices.Data.LandlinePayment;
+package FawrySoftwareSystem.Phase2.FawryServices.Data.LandlinePayment;
 
 public class QuarterReceipt extends LandlinePayment {
 
