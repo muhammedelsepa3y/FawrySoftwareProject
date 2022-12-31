@@ -4,28 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97c83f22-c582-4ebe-9711-f3b66eca15fc" name="Changes" comment="add Internet Payment and some updates">
+    <list default="true" id="97c83f22-c582-4ebe-9711-f3b66eca15fc" name="Changes" comment="just modify project structure">
+      <change afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Services/AdminServices/AdminServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/PaymentMethods/PaymentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/PaymentMethods/PaymentFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/Donation/CancerHospitals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/Donation/CancerHospitals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/Donation/Donations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/Donation/Donations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/Donation/NonProfitableOrganization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/Donation/NonProfitableOrganization.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/Donation/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/Donation/School.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/Factory/PayFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/Factory/PayFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/Factory/PaybillFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/Factory/PaybillFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/EtisalatInternetPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/InternetPayment/EtisalatInternetPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/InternetPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/InternetPayment/InternetPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/OrangeInternetPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/InternetPayment/OrangeInternetPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/VodafoneInternetPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/InternetPayment/VodafoneInternetPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/InternetPayment/WeInternetPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/InternetPayment/WeInternetPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/LandlinePayment/LandlinePayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/LandlinePayment/LandlinePayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/LandlinePayment/MonthlyReceipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/LandlinePayment/MonthlyReceipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/LandlinePayment/QuarterReceipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/LandlinePayment/QuarterReceipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/MobileRecharge/EtisalatMobileRecharge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/MobileRecharge/EtisalatMobileRecharge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/MobileRecharge/MobileRecharge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/MobileRecharge/MobileRecharge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/MobileRecharge/OrangeMobileRecharge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/MobileRecharge/OrangeMobileRecharge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/MobileRecharge/VodafoneMobileRecharge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/MobileRecharge/VodafoneMobileRecharge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/UserServices/Data/MobileRecharge/WeMobileRecharge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Data/MobileRecharge/WeMobileRecharge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Controllers/AdminController/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Controllers/AdminController/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Controllers/UserController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Controllers/UserController/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +84,7 @@
       <workItem from="1672309934406" duration="749000" />
       <workItem from="1672330319672" duration="1996000" />
       <workItem from="1672412440695" duration="631000" />
-      <workItem from="1672487994620" duration="831000" />
+      <workItem from="1672487994620" duration="2497000" />
     </task>
     <task id="LOCAL-00001" summary="last commit in code &#10;add default admin and user in main">
       <created>1670249037976</created>
@@ -138,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672413053310</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="just modify project structure">
+      <created>1672488891115</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672488891115</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +141,7 @@
     <MESSAGE value="add cash payment" />
     <MESSAGE value="some update" />
     <MESSAGE value="add Internet Payment and some updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Internet Payment and some updates" />
+    <MESSAGE value="just modify project structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="just modify project structure" />
   </component>
 </project>
