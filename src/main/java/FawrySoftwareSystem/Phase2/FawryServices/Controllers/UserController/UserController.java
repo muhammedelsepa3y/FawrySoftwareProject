@@ -33,7 +33,7 @@ public class UserController {
         return ResponseEntity.ok(userServices.SearchServices(query));
     }
 
-    @RequestMapping(value = "/pay", method = RequestMethod.POST)
+    @RequestMapping(value = "/payBill", method = RequestMethod.POST)
     public ResponseEntity<Object> AddTransaction(@RequestBody TransactionModel transactionModel, @RequestHeader("uuid") UUID uuid) {
         return ResponseEntity.ok(userServices.AddTransaction(transactionModel, uuid));
     }

@@ -58,7 +58,7 @@ public class ServicesRepository {
     }
 
     public String AddTransaction(TransactionModel transaction, UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
 
             double amount = 0;
@@ -102,7 +102,7 @@ public class ServicesRepository {
     }
 
     public String getWallet(UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
             return "you have " + user.getWallet() + " $ in your wallet";
         } else {
@@ -112,7 +112,7 @@ public class ServicesRepository {
     }
 
     public String addToWallet(WalletRechargeModel walletRechargeModel, UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
             if (walletRechargeModel.getCreditCardCVV().length() == 3 && walletRechargeModel.getCreditCardNumber().length() == 16 && walletRechargeModel.getCreditCardExpirationDate().length() == 5) {
                 user.addWallet(walletRechargeModel.getAmount());
@@ -127,7 +127,7 @@ public class ServicesRepository {
     }
 
     public List<TransactionModel> getTransactions(UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
             return user.getTransaction();
         } else {
@@ -137,7 +137,7 @@ public class ServicesRepository {
 
     public String addRefund(RefundModel refund, UUID uuid) {
 
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
             for (TransactionModel trans : user.getTransaction()) {
                 if (trans.getId() == refund.getId()) {
@@ -160,7 +160,7 @@ public class ServicesRepository {
     }
 
     public List<RefundModel> checkRefund(UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         List<RefundModel> reflist = new ArrayList<>();
         if (user != null) {
             for (RefundModel ref : Allrefunds) {
@@ -175,7 +175,7 @@ public class ServicesRepository {
     }
 
     public Object GetNotCheckedRefund(UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
             if (user.isAdmin()) {
                 return NotChecked;
@@ -189,7 +189,7 @@ public class ServicesRepository {
     }
 
     public String addDiscount(DiscountModel discount, UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
 
         if (user != null) {
             if (user.isAdmin()) {
@@ -223,7 +223,7 @@ public class ServicesRepository {
     }
 
     public String deleteDiscount(DiscountModel discount, UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
 
         if (user != null) {
             if (user.isAdmin()) {
@@ -246,7 +246,7 @@ public class ServicesRepository {
     }
 
     public String RefundAction(RefundModel refund, UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
             if (user.isAdmin()) {
                 for (RefundModel ref : NotChecked) {
@@ -272,7 +272,7 @@ public class ServicesRepository {
     }
 
     public String setCash(Map<String, String> service, UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         String featue = service.get("featureName");
         String iscash = service.get("isAcceptCash");
         boolean isAcceptCash = iscash.equalsIgnoreCase("true");
@@ -309,7 +309,7 @@ public class ServicesRepository {
     }
 
     public Object getAllTransaction(UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         List<TransactionModel> transactionModels=new ArrayList<>();
         if (user != null) {
             if (user.isAdmin()) {
@@ -329,7 +329,7 @@ public class ServicesRepository {
     }
 
     public Object getOneUserTransaction(UUID uuid, UserModel SearchedUser) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
             if (user.isAdmin()) {
                 for (UserModel userModel: authRepository.getUsers(uuid)){
@@ -347,7 +347,7 @@ public class ServicesRepository {
     }
 
     public Object getRefunds(UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
             if (user.isAdmin()) {
                 return Allrefunds;
@@ -361,7 +361,7 @@ public class ServicesRepository {
     }
 
     public Object GetUserWalletHistory(UUID uuid, UserModel SearchedUser ) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         if (user != null) {
             if (user.isAdmin()) {
                 for (UserModel userModel: authRepository.getUsers(uuid)){
@@ -379,7 +379,7 @@ public class ServicesRepository {
     }
 
     public Object GetallWalletHistory(UUID uuid) {
-        UserModel user = authRepository.userexistToPay(uuid);
+        UserModel user = authRepository.userExist(uuid);
         List<WalletRechargeModel> walletRechargeModels=new ArrayList<>();
         if (user != null) {
             if (user.isAdmin()) {

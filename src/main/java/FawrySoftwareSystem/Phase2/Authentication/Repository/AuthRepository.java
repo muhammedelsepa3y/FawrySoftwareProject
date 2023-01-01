@@ -56,7 +56,7 @@ public class AuthRepository {
         }
         return null;
     }
-    public UserModel userexistToPay(UUID id) {
+    public UserModel userExist(UUID id) {
         for (UserModel userModel : users) {
             if (userModel.getId().equals(id) && userModel.isLogin()) {
                 return userModel;
@@ -66,7 +66,7 @@ public class AuthRepository {
     }
 
     public List<UserModel> getUsers(UUID id){
-        UserModel admin=userexistToPay(id);
+        UserModel admin=userExist(id);
         if(admin!=null && admin.isAdmin()){
             return users;
         }

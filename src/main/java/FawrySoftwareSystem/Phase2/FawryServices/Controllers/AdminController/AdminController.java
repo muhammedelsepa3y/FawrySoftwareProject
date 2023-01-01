@@ -16,7 +16,7 @@ import java.util.UUID;
 public class AdminController {
     @Autowired
     private AdminServices adminServices;
-    @RequestMapping(value = "/refund/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/refund/getNotChecked", method = RequestMethod.GET)
         public ResponseEntity<Object>  GetNotCheckedRefund(@RequestHeader("uuid") UUID uuid) {
         return ResponseEntity.ok(adminServices.GetNotCheckedRefund(uuid));
     }
@@ -28,7 +28,7 @@ public class AdminController {
     public ResponseEntity<String> DeleteDiscount(@RequestBody DiscountModel discount, @RequestHeader("uuid") UUID uuid) {
         return ResponseEntity.ok(adminServices.DeleteDiscount(discount,uuid));
     }
-    @RequestMapping(value = "/refund/request", method = RequestMethod.PUT)
+    @RequestMapping(value = "/refund/makeAction", method = RequestMethod.PUT)
     public ResponseEntity<String> Refund(@RequestBody RefundModel refund, @RequestHeader("uuid") UUID uuid) {
         return ResponseEntity.ok(adminServices.RefundAction(refund,uuid));
     }
