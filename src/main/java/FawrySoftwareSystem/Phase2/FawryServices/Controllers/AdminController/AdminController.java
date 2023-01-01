@@ -17,7 +17,7 @@ public class AdminController {
     @Autowired
     private AdminServices adminServices;
     @RequestMapping(value = "/refund/getNotChecked", method = RequestMethod.GET)
-        public ResponseEntity<Object>  GetNotCheckedRefund(@RequestHeader("uuid") UUID uuid) {
+    public ResponseEntity<Object>  GetNotCheckedRefund(@RequestHeader("uuid") UUID uuid) {
         return ResponseEntity.ok(adminServices.GetNotCheckedRefund(uuid));
     }
     @RequestMapping(value = "/discounts/add", method = RequestMethod.POST)
