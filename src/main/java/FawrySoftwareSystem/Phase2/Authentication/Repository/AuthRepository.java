@@ -64,4 +64,12 @@ public class AuthRepository {
         }
         return null;
     }
+
+    public List<UserModel> getUsers(UUID id){
+        UserModel admin=userexistToPay(id);
+        if(admin!=null && admin.isAdmin()){
+            return users;
+        }
+        return null;
+    }
 }

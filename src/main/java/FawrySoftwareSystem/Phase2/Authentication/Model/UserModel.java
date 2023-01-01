@@ -1,5 +1,7 @@
 package FawrySoftwareSystem.Phase2.Authentication.Model;
 
+import FawrySoftwareSystem.Phase2.FawryServices.Models.WalletRechargeModel;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +19,7 @@ public class UserModel {
     private String username;
     private double wallet = 0;
     private boolean isLogin = false;
-
+    private List<WalletRechargeModel> walletRechargeModels=new ArrayList<>();
     private List<TransactionModel> transaction = new ArrayList<TransactionModel>();
 
     public UserModel(String name, String email, String password, String phone, String username, boolean isAdmin) {
@@ -99,5 +101,13 @@ public class UserModel {
 
     public void RemoveTransaction(TransactionModel transaction) {
         this.transaction.remove(transaction);
+    }
+
+    public void addWalletHistory(WalletRechargeModel walletRechargeModel) {
+        this.walletRechargeModels.add(walletRechargeModel);
+    }
+
+    public List<WalletRechargeModel> getWalletHistory() {
+        return walletRechargeModels;
     }
 }

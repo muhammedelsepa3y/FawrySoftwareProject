@@ -1,4 +1,4 @@
-package FawrySoftwareSystem.Phase2.Models;
+package FawrySoftwareSystem.Phase2.FawryServices.Models;
 
 import java.util.Date;
 

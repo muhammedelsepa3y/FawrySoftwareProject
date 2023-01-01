@@ -1,11 +1,10 @@
-package FawrySoftwareSystem.Phase2.Models;
+package FawrySoftwareSystem.Phase2.FawryServices.Models;
+
 
 import FawrySoftwareSystem.Phase2.Authentication.Model.TransactionModel;
-import FawrySoftwareSystem.Phase2.Authentication.Model.Model.UserModel;
+import FawrySoftwareSystem.Phase2.Authentication.Model.UserModel;
 
 import java.util.Date;
-
-
 
 public class RefundModel {
 

@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97c83f22-c582-4ebe-9711-f3b66eca15fc" name="Changes" comment="just modify project structure">
-      <change afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Services/AdminServices/AdminServices.java" afterDir="false" />
+    <list default="true" id="97c83f22-c582-4ebe-9711-f3b66eca15fc" name="Changes" comment="add admin services">
+      <change afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Repository/ServicesRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Model/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Authentication/Model/UserModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Controllers/AdminController/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Controllers/AdminController/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Controllers/UserController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Controllers/UserController/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Services/AdminServices/AdminServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Services/AdminServices/AdminServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Services/AdminServices/UserServices/UserServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Services/UserServices/UserServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Models/DiscountModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Models/DiscountModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Models/RefundModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Models/RefundModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/Models/WalletRechargeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FawrySoftwareSystem/Phase2/FawryServices/Models/WalletRechargeModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +68,10 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\muham\Desktop\fawry-software-system\FawrySoftwareProject\src\main\java\FawrySoftwareSystem\Phase2\UserServices\Data" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\muham\Desktop\fawry-software-system\FawrySoftwareProject\src\main\java\FawrySoftwareSystem\Phase2\FawryServices\Repository" />
+      <recent name="C:\Users\muham\Desktop\fawry-software-system\FawrySoftwareProject\src\main\java\FawrySoftwareSystem\Phase2\FawryServices\Services\AdminServices" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Phase2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -84,7 +94,8 @@
       <workItem from="1672309934406" duration="749000" />
       <workItem from="1672330319672" duration="1996000" />
       <workItem from="1672412440695" duration="631000" />
-      <workItem from="1672487994620" duration="2497000" />
+      <workItem from="1672487994620" duration="4644000" />
+      <workItem from="1672534931319" duration="623000" />
     </task>
     <task id="LOCAL-00001" summary="last commit in code &#10;add default admin and user in main">
       <created>1670249037976</created>
@@ -128,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672488891115</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add admin services">
+      <created>1672503207987</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672503207987</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +160,7 @@
     <MESSAGE value="some update" />
     <MESSAGE value="add Internet Payment and some updates" />
     <MESSAGE value="just modify project structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="just modify project structure" />
+    <MESSAGE value="add admin services" />
+    <option name="LAST_COMMIT_MESSAGE" value="add admin services" />
   </component>
 </project>
