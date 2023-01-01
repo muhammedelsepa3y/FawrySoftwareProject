@@ -164,7 +164,7 @@ public class ServicesRepository {
         List<RefundModel> reflist = new ArrayList<>();
         if (user != null) {
             for (RefundModel ref : Allrefunds) {
-                if (ref.getUser().getId() == uuid) {
+                if (ref.getUser().getId() .equals(uuid) ) {
                     reflist.add(ref);
                 }
             }
